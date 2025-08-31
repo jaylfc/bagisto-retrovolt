@@ -1,11 +1,18 @@
-# Ultra-minimal Bagisto nixpacks.toml - Skip frontend build
+# Fixed nixpacks.toml - Proper Node.js installation
 
 [phases.setup]
-nixPkgs = ["php82Packages.composer"]
+nixPkgs = ["nodejs-18_x", "php82Packages.composer"]
 
 [phases.install]
 cmds = [
-  "composer install --optimize-autoloader --no-dev --no-interaction"
+  "composer install --optimize-autoloader --no-dev --no-interaction",
+  "npm install --silent"
+]
+
+[phases.build]
+cmds = [
+  "npm run build",
+  "php artisan storage:link || true"
 ]
 
 [start]
