@@ -1,5 +1,4 @@
-[providers]
-php = "8.2"
+# Nixpacks configuration for Bagisto Laravel deployment on Coolify
 
 [variables]
 NODE_VERSION = "18"
